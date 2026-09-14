@@ -1,0 +1,26 @@
+{
+  "name": "Draft Desk — article marks",
+  "short_name": "Draft Desk",
+  "description": "Offline article marks desk: fallacies, political angle, testable, conflict, so what.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#efe9de",
+  "theme_color": "#3c5a4c",
+  "lang": "en-AU",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
