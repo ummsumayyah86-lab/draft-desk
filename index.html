@@ -1,1 +1,79 @@
-FILE:/workspace/practice-workbench/draft-desk/index.html
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#3c5a4c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Draft Desk" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <title>Draft Desk — article marks</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="top-inner">
+      <h1>Draft Desk — article marks</h1>
+      <div class="status-row">
+        <div class="save-status" id="saveStatus">Not saved yet</div>
+        <button type="button" class="chip" id="hypocrisyChip" title="Insert preferred wording into the last editor">
+          Prefer <b>hypocrite / hypocrisy</b> — not “double standard”
+        </button>
+      </div>
+      <div class="actions">
+        <button type="button" id="btnDrafts">Drafts</button>
+        <button type="button" id="btnNew">New draft</button>
+        <button type="button" id="btnExport">Export</button>
+        <button type="button" class="ghost" id="btnExpand">Expand all</button>
+        <button type="button" class="ghost" id="btnCollapse">Collapse all</button>
+      </div>
+    </div>
+  </header>
+  <main class="wrap" id="main">
+    <section class="card" aria-labelledby="pieceHeading">
+      <h2 id="pieceHeading">Article</h2>
+      <p class="hint">Paste the piece, or load a text file. A URL is a note only — this page cannot fetch articles while offline.</p>
+      <div class="field"><label for="draftName">Draft name</label><input id="draftName" type="text" maxlength="120" autocomplete="off" /></div>
+      <div class="field"><label for="pieceTitle">Piece title / source</label><input id="pieceTitle" type="text" maxlength="240" autocomplete="off" /></div>
+      <div class="field"><label for="sourceUrl">Source URL (note only)</label><input id="sourceUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://" /></div>
+      <div class="field">
+        <label for="articleText">Article text</label>
+        <textarea id="articleText" spellcheck="true" placeholder="Paste the article here."></textarea>
+        <div class="counts" id="articleCounts">0 words · 0 characters</div>
+        <div class="file-row">
+          <label class="file-btn">Load .txt / .md / .html
+            <input id="articleFile" type="file" accept=".txt,.md,.markdown,.html,.htm,text/plain,text/markdown,text/html" />
+          </label>
+          <span class="note" id="fileNote"></span>
+        </div>
+      </div>
+    </section>
+    <details class="card lens" id="sec-fallacies" open><summary><span>Fallacies</span><span class="sum-count" data-count-for="fallacies"></span></summary><div class="card-body"><p class="hint">What slips, leaps, or weak moves in the argument? Name the move and one concrete line or paraphrase.</p><div class="editor-wrap" data-field="fallacies"></div></div></details>
+    <details class="card lens" id="sec-political" open><summary><span>Political Angle</span><span class="sum-count" data-count-for="political"></span></summary><div class="card-body"><p class="hint">Who benefits? What frame is pushed? What is downplayed?</p><div class="editor-wrap" data-field="political"></div></div></details>
+    <details class="card lens" id="sec-testable" open><summary><span>Testable</span><span class="sum-count" data-count-for="testable"></span></summary><div class="card-body"><p class="hint">Which claims could be checked? What evidence is given versus asserted? What would falsify a key claim?</p><div class="editor-wrap" data-field="testable"></div></div></details>
+    <details class="card lens" id="sec-conflict" open><summary><span>Conflict</span><span class="sum-count" data-count-for="conflict"></span></summary><div class="card-body"><p class="hint">Where do values, interests, or facts collide? What tension does the piece rely on or hide?</p><div class="editor-wrap" data-field="conflict"></div></div></details>
+    <details class="card lens" id="sec-prompts" open><summary><span>Conflict / Testable prompts</span></summary><div class="card-body"><ul class="prompts">
+      <li><label><input type="checkbox" data-prompt="claim" /> Main claim stated clearly?</label></li>
+      <li><label><input type="checkbox" data-prompt="evidence" /> Evidence cited, or only asserted?</label></li>
+      <li><label><input type="checkbox" data-prompt="steelman" /> Opposing view steelmanned, or strawmanned?</label></li>
+      <li><label><input type="checkbox" data-prompt="incentive" /> Incentive / power interest named?</label></li>
+      <li><label><input type="checkbox" data-prompt="assumption" /> Unstated assumption that, if false, sinks the piece?</label></li>
+      <li><label><input type="checkbox" data-prompt="hypocrisy" /> Hypocrisy pattern (same rule, uneven application)?</label></li>
+    </ul></div></details>
+    <details class="card lens" id="sec-sowhat" open><summary><span>So what?</span><span class="sum-count" data-count-for="sowhat"></span></summary><div class="card-body"><p class="hint">One or two lines when you stop. What should a reader take from the marks?</p><div class="editor-wrap" data-field="sowhat" data-short="1"></div></div></details>
+    <p class="hint" style="margin-top:1rem">Bot access: Export → save <code>.md</code>/<code>.json</code> into OneDrive <strong>Portfolio/Practice/Drafts/</strong>. Prefer hypocrite / hypocrisy.</p>
+    <p class="privacy">Privacy: stays on this device unless you export. No legal name or suburb on this page.</p>
+  </main>
+  <dialog id="draftsDialog" aria-labelledby="draftsTitle"><div class="dlg-h" id="draftsTitle">Named drafts</div><div class="dlg-b"><div id="draftsList"></div><div class="actions" style="margin-top:0.8rem"><button type="button" class="primary" id="btnCreateNamed">Create named draft</button><button type="button" id="btnCloseDrafts">Close</button></div></div></dialog>
+  <dialog id="exportDialog" aria-labelledby="exportTitle"><div class="dlg-h" id="exportTitle">Export this draft</div><div class="dlg-b"><p class="hint">Downloads stay on this device. Save into OneDrive Portfolio/Practice/Drafts/ for Chief of Staff.</p><div class="actions"><button type="button" class="primary" id="btnDlMd">Download .md</button><button type="button" class="primary" id="btnDlJson">Export JSON</button><button type="button" id="btnDlHtml">Download .html</button><button type="button" id="btnCloseExport">Close</button></div></div></dialog>
+  <script src="app-a.js"></script>
+  <script src="app-b.js"></script>
+  <script>if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('./sw.js').catch(function () {}); }); }</script>
+</body>
+</html>
