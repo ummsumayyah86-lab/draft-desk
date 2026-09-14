@@ -72,8 +72,6 @@
   </main>
   <dialog id="draftsDialog" aria-labelledby="draftsTitle"><div class="dlg-h" id="draftsTitle">Named drafts</div><div class="dlg-b"><div id="draftsList"></div><div class="actions" style="margin-top:0.8rem"><button type="button" class="primary" id="btnCreateNamed">Create named draft</button><button type="button" id="btnCloseDrafts">Close</button></div></div></dialog>
   <dialog id="exportDialog" aria-labelledby="exportTitle"><div class="dlg-h" id="exportTitle">Export this draft</div><div class="dlg-b"><p class="hint">Downloads stay on this device. Save into OneDrive Portfolio/Practice/Drafts/ for Chief of Staff.</p><div class="actions"><button type="button" class="primary" id="btnDlMd">Download .md</button><button type="button" class="primary" id="btnDlJson">Export JSON</button><button type="button" id="btnDlHtml">Download .html</button><button type="button" id="btnCloseExport">Close</button></div></div></dialog>
-  <script src="app-a.js"></script>
-  <script src="app-b.js"></script>
-  <script>if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('./sw.js').catch(function () {}); }); }</script>
+  <script src="app.js"></script>
 </body>
 </html>
