@@ -1,1 +1,1 @@
-@file:///workspace/practice-workbench/draft-desk-fix/app.js
+LOAD_FROM_/tmp/FINAL_mcp_args.json
