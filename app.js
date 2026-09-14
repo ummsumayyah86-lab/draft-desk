@@ -1,1 +1,1 @@
-PLACEHOLDER_LOAD_FROM_FILE
+@file:///workspace/practice-workbench/draft-desk-fix/app.js
